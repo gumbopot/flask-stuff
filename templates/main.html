@@ -7,7 +7,14 @@
   <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/fav-icon-36x36.png') }}">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   
+  <!--Restyling-->
+  <style type="text/css">
+    body { background: #E1EAED !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+  </style>
+
   <!--FullCalendar Dependancies-->
   <link href="{{ url_for('static', filename='fullcalendar-3.9.0/fullcalendar.min.css') }}" rel='stylesheet' />
   <link href="{{ url_for('static', filename='fullcalendar-3.9.0/fullcalendar.print.css') }}" rel='stylesheet' media='print' />
@@ -43,118 +50,119 @@
 </head>
 
 <header>
-  <div class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Eric Hyatt</a>
-    <div class = "container-fluid justify-content-end">
-    	<ul class="nav navbar-nav navbar-right">		  
-    		<div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">
-      		<h5>
-      		<!-- SUPPORT LINK -->
-      		<li>
-      		  <a href="/support-donate/" class ="nav-item"> <span class="fa fa-heart"></span> Support   </a>
-          </li>
-          <!-- REGISTER MODAL -->
-          <li>
-      		  <a class="nav-item" role="presentation" data-toggle="modal" data-target="#exampleModal" href="#"><span class="fa fa-sign-in"></span> Login   </a>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        		  <div class="modal-dialog">
-          			<div class="modal-content">
-                  <!-- MODAL HEADER -->
-          			  <div class="modal-header">
-            				<h4 class="modal-title" id="exampleModalLabel">Login</h4>
-          			  </div>
-          			  <!-- MODAL BODY -->
-          			  <div class="modal-body">
-          				  <div class="container-fluid">
-                      <form action="" class="form-inline" method="post">
-                        <input type="text" class="form-control" placeholder="Username" name="username" value="">
-                        <input type="password" class="form-control" placeholder="Password" name="password" value="">
-                      </form>
-          						  
-                      <div class="container">
-                        <br>
-                          <p>No account? <a href='/register'>Register here</a>.</p>
-                        <br>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- MODAL FOOTER -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" value="Login">Login</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-      		<!-- REGISTER MODAL -->
-          <li>
-            <a role="presentation" class="nav-item" data-toggle="modal" data-target="#register" href="#"><span class="fa fa-pencil" aria-hidden="true"></span> Sign up</a>
-          		<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-header">    
+      <button type="button" class="btn btn-outline-primary">
+        <a class="navbar-brand-primary" href="/">Eric Hyatt</a>
+      </button>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> 
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="container-fluid justify-content-end">
+        <ul class="nav navbar-nav navbar-right">
+          <h5>
+        		<!-- SUPPORT LINK -->
+            <li>
+        		  <a href="/support-donate/" class ="nav-item"> <span class="fa fa-heart"></span> Support   </a>
+            </li>
+            <!-- REGISTER MODAL -->
+            <li>
+        		  <a class="nav-item" role="presentation" data-toggle="modal" data-target="#exampleModal" href="#"><span class="fa fa-sign-in"></span> Login   </a>
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           		  <div class="modal-dialog">
             			<div class="modal-content">
-            			  <!-- MODAL HEADER -->
+                    <!-- MODAL HEADER -->
             			  <div class="modal-header">
-            				  <h4 class="modal-title" id="exampleModalLabel">Register</h4>
+              				<h4 class="modal-title" id="exampleModalLabel">Login</h4>
             			  </div>
             			  <!-- MODAL BODY -->
             			  <div class="modal-body">
-            				  <div class="container">
-            					  
-            						<form method=post action="/register">
-            						  <dl>
-            							
-                            <dt><label for="username">Username</label>
-                            <dd><input id="username" name="username" type="text" value="">
+            				  <div class="container-fluid">
+                        <form action="" class="form-inline" method="post">
+                          <input type="text" class="form-control" placeholder="Username" name="username" value="">
+                          <input type="password" class="form-control" placeholder="Password" name="password" value="">
+                        </form>
+            						  
+                        <div class="container">
+                          <br>
+                            <p>No account? <a href='/register'>Register here</a>.</p>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- MODAL FOOTER -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" value="Login">Login</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+      		  <!-- REGISTER MODAL -->
+            <li>
+              <a role="presentation" class="nav-item" data-toggle="modal" data-target="#register" href="#"><span class="fa fa-pencil" aria-hidden="true"></span> Sign up</a>
+          		  <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          		    <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- MODAL HEADER -->
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Register</h4>
+              			  </div>
+              			  <!-- MODAL BODY -->
+              			  <div class="modal-body">
+              				  <div class="container">
+              					  
+              						<form method=post action="/register">
+              						  <dl>
+              							
+                              <dt><label for="username">Username</label>
+                              <dd><input id="username" name="username" type="text" value=""></dd>
                             
-                            </dd>
-                          
-                          							
-                            <dt><label for="email">Email Address</label>
-                            <dd><input id="email" name="email" type="text" value="">
+                            							
+                              <dt><label for="email">Email Address</label>
+                              <dd><input id="email" name="email" type="text" value=""></dd>
                             
-                            </dd>
-                          
-                          							
-                            <dt><label for="password">New Password</label>
-                            <dd><input id="password" name="password" type="password" value="">
+                            							
+                              <dt><label for="password">New Password</label>
+                              <dd><input id="password" name="password" type="password" value=""></dd>
                             
-                            </dd>
-                          
-                          							
-                            <dt><label for="confirm">Repeat Password</label>
-                            <dd><input id="confirm" name="confirm" type="password" value="">
+                            							
+                              <dt><label for="confirm">Repeat Password</label>
+                              <dd><input id="confirm" name="confirm" type="password" value=""></dd>
                             
-                            </dd>
-                          
-                            
-                            <dt>
-                            <label for="accept_tos">I accept the <a href="/about/tos" target="blank">Terms of Service</a> and <a href="/about/privacy-policy" target="blank">Privacy Notice</a> (updated Jan 22, 2015)</label>
-                            <dd><input id="accept_tos" name="accept_tos" type="checkbox" value="y">
-                            
-                            </dd>
-            
-            						  </dl>
-            						</form>
-            				  </div>
-            			  </div>
+                              
+                              <dt>
+                              <label for="accept_tos">I accept the <a href="/about/tos" target="blank">Terms of Service</a> and <a href="/about/privacy-policy" target="blank">Privacy Notice</a> (updated Jan 22, 2015)</label>
+                              <dd><input id="accept_tos" name="accept_tos" type="checkbox" value="y"></dd>
+              
+              						  </dl>
+              						</form>
+              				  </div>
+              			  </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" value=Register>Register</button>
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
-            			</div>
+            		  </div>
           		  </div>
           		</div>
-          	</li>
-          </h5>
-      	</div>  
-    	</ul>
-  	</div>
-	</div>
-  
+            </li>
+          </h5> 
+      	</ul>
+      </div>
+    </div>
+  	
+  	
+  </div>  
 </header>
 
 <body>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 {% block content%}
 {% endblock %}
 </body>
