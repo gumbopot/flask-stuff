@@ -1,6 +1,38 @@
 {%extends "main.html"%}
 {%block content%}
-	
+	  <!--FullCalendar Dependancies-->
+  <link href="{{ url_for('static', filename='fullcalendar-3.9.0/fullcalendar.min.css') }}" rel='stylesheet' />
+  <link href="{{ url_for('static', filename='fullcalendar-3.9.0/fullcalendar.print.css') }}" rel='stylesheet' media='print' />
+  <script src="{{ url_for('static', filename='fullcalendar-3.9.0/lib/moment.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='fullcalendar-3.9.0/lib/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='fullcalendar-3.9.0/fullcalendar.min.js') }}"></script>
+  <script>
+  	$(document).ready(function() {
+  
+  		$('#calendar').fullCalendar({
+  			header: {
+  				left: 'prev,next today',
+  				center: 'title',
+  				right: 'month,agendaWeek,agendaDay'
+  			},
+  			defaultDate: '2018-07-17',
+  			editable: true,
+  			eventLimit: true, // allow "more" link when too many events
+  			events: {
+  				url: 'data',
+  				error: function() {
+  					$('#script-warning').show();
+  				}
+  			},
+  			loading: function(bool) {
+  				$('#loading').toggle(bool);
+  			}
+  		});
+  
+  	});
+  </script>
+  
+  
 	<div id='script-warning'>
 		Error getting data from <code>/data</code> endpoint.
 	</div>
